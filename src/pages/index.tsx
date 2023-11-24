@@ -1,67 +1,70 @@
-/* eslint-disable */
-import { useEffect, useState } from 'react'
-// import kataBackground from "../images/kata-background.jpg"
-import Image from 'next/image'
-import { type Champion } from '~/types/types'
-const CHAMPIONS_DATA_URL = "http://ddragon.leagueoflegends.com/cdn/13.20.1/data/en_US/champion.json"
-const CHAMP_IMAGE_URL = "http://ddragon.leagueoflegends.com/cdn/13.20.1/img/champion/"
+import { useState } from "react";
+import Image from "next/image";
+import { api } from "~/utils/api";
+import Link from "next/link";
+const CHAMP_IMAGE_URL =
+  "http://ddragon.leagueoflegends.com/cdn/13.20.1/img/champion/";
 
 export default function Home() {
-  const [champs, setChamps] = useState<Champion[]>([])
-  const [search, setSearch] = useState("")
-  const champsFiltered = champs.filter(({name}) => (name.toLowerCase()).includes(search.toLowerCase()))
+  const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    const fetchData = () => {
-      fetch(CHAMPIONS_DATA_URL)
-      .then(res => res.json())
-      .then((data) => {  return (data.data)})
-      .then((res) => { return setChamps(Object.values(res))})
-    }
-    fetchData()
-  }, [])
+  const { data } = api.champion.getAll.useQuery();
+  const champsFiltered =
+    data?.champions?.filter(({ name }) =>
+      name.toLowerCase().includes(search.toLowerCase()),
+    ) ?? [];
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const searchValue = event.target.value
-    setSearch(searchValue)
-  }
+    const searchValue = event.target.value;
+    setSearch(searchValue);
+  };
 
   return (
-    <div className={`h-[100vh] bg-[url(/kata-background.jpg)] background-image:linear-gradient(rgba(9, 148, 143, 0.9)) bg-cover bg-center `}>
-
-      <section className='flex h-[50vh] items-center'>
-        <div className=' w-full flex flex-col'>
-          <h1 className='text-white text-center text-8xl py-10 mt-32'>Select your matchup</h1>
-          <input type="text"
-          value={search}
-          placeholder='Aatrox, Ahri, Zed, Zeri'
-          onChange={handleChange}
-          className='w-5/12 mx-auto text-black py-4 px-6 bg-zinc-200 text-xl rounded-md border-4 focus:border-neutral-900'/>
+    <div
+      className="bg-slate-950 h-[100vh]">
+      <section className="flex h-[50vh] items-center">
+        <div className=" flex w-full flex-col">
+          <h1 className="mt-32 py-10 text-center text-8xl text-white">
+            Select your champ
+          </h1>
+          <input
+            type="text"
+            value={search}
+            placeholder="Aatrox, Ahri, Zed, Zeri"
+            onChange={handleChange}
+            className="mx-auto w-5/12 rounded-md border-4 bg-zinc-200 px-6 py-4 text-xl text-black focus:border-neutral-900"
+          />
         </div>
       </section>
-      {
-          champsFiltered.length > 0 ? 
-         
-          <div className='overflow-y-scroll h-[35vh]'>
-          <ul className=''>
-            <div className='grid grid-cols-5 w-3/5 mx-auto '>
-            {champsFiltered.map(({id, name, image}) => {
-              return (
-                <a href={id} key={id} className='flex flex-col py-5 transition hover:scale-125'>
-                  <p className='text-white text-center'>{name}</p>
-                  <Image src={CHAMP_IMAGE_URL + image.full} className='w-1/2 mx-auto' alt="" width={1280} height={1080}/>
-                </a>
-                )
+      {champsFiltered?.length > 0 ? (
+          <ul>
+            <div className="mx-auto grid w-3/5 grid-cols-5 h-[35vh] overflow-y-scroll overflow-x-hidden">
+              {champsFiltered?.map(({ name, key, id }) => {
+                return (
+                  <Link
+                    href={`/post/posts/${id}`}
+                    key={key}
+                    className="flex flex-col py-5 transition hover:scale-125"
+                  >
+                    <p className="text-center text-white">{name}</p>
+                    <img
+                      src={CHAMP_IMAGE_URL + key + ".png"}
+                      className="mx-auto w-1/2"
+                      alt=""
+                      width={1280}
+                      height={1080}
+                    />
+                  </Link>
+                );
               })}
-              </div>
-            </ul>
-        </div> :
-        <div className='text-center text-white w-full mt-20'>
-          <p className='animate-bounce text-5xl'>Loading</p>
+            </div>
+          </ul>
+      ) : (
+        <div className="mt-20 w-full text-center text-white">
+          <p className="animate-bounce text-5xl">Loading</p>
         </div>
-        }
-        {/* <Image src={kataBackground} className='h-full w-full pointer-events-none ' alt="Kata background" width={1280}/> */}
-
+      )}
+      {/* <Image src={kataBackground} className='h-full w-full pointer-events-none ' alt="Kata background" width={1280}/> */}
     </div>
-  )
+  );
 }
