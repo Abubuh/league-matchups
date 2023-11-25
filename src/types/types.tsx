@@ -1,6 +1,6 @@
 export interface Champion {
     name: string,
-    id: string,
+    id: number,
     image: Image
     spells: Ability[]
 }
