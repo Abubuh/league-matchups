@@ -19,6 +19,16 @@ export const championRouter = createTRPCRouter({
       return { champion };
     }),
 
+    getNameById: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ ctx, input }) => {
+      const champion = await ctx.db.champion.findUnique({
+        where: { id: input.id},
+      });
+      const name = champion?.name
+      return { data: name };
+    }), 
+
   getByName: publicProcedure
   .input(z.object({ key: z.string().min(1) }))
   .query(async ({ ctx, input }) => {
