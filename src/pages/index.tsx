@@ -1,9 +1,8 @@
 import { useState } from "react";
-import Image from "next/image";
 import { api } from "~/utils/api";
 import Link from "next/link";
-const CHAMP_IMAGE_URL =
-  "http://ddragon.leagueoflegends.com/cdn/13.20.1/img/champion/";
+import { CHAMP_IMAGE_URL } from "~/config";
+import LogginButton from "~/components/LoginButton";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -20,25 +19,29 @@ export default function Home() {
   };
 
   return (
-    <div
-      className="bg-slate-950 h-[100vh]">
-      <section className="flex h-[50vh] items-center">
-        <div className=" flex w-full flex-col">
-          <h1 className="mt-32 py-10 text-center text-8xl text-white">
-            Select your champ
-          </h1>
-          <input
-            type="text"
-            value={search}
-            placeholder="Aatrox, Ahri, Zed, Zeri"
-            onChange={handleChange}
-            className="mx-auto w-5/12 rounded-md border-4 bg-zinc-200 px-6 py-4 text-xl text-black focus:border-neutral-900"
-          />
-        </div>
-      </section>
-      {champsFiltered?.length > 0 ? (
-          <ul>
-            <div className="mx-auto grid w-3/5 grid-cols-5 h-[35vh] overflow-y-scroll overflow-x-hidden">
+    <div className="h-[100vh] bg-slate-900">
+      <div className="mx-auto flex w-[60%] flex-col gap-8">
+        <nav className="mb-32 flex justify-end pt-10">
+          <LogginButton></LogginButton>
+        </nav>
+        {/* <RoutingButton text="Hello" url="login"/> */}
+        <section className="flex items-center">
+          <div className=" flex w-full flex-col gap-14">
+            <h1 className="text-center text-8xl text-white">
+              Select your champ
+            </h1>
+            <input
+              type="text"
+              value={search}
+              placeholder="Aatrox, Ahri, Zed, Zeri"
+              onChange={handleChange}
+              className="mx-auto w-6/12 rounded-md border-4 border-slate-950 bg-zinc-200 px-6 py-4 text-xl text-black focus:border-neutral-900"
+            />
+          </div>
+        </section>
+        {champsFiltered?.length > 0 ? (
+          <ul className="rounded-md border-4 border-slate-950 bg-slate-800 p-4">
+            <div className="mx-auto grid h-[35vh] grid-cols-5 overflow-x-hidden overflow-y-scroll">
               {champsFiltered?.map(({ name, key, id }) => {
                 return (
                   <Link
@@ -59,12 +62,12 @@ export default function Home() {
               })}
             </div>
           </ul>
-      ) : (
-        <div className="mt-20 w-full text-center text-white">
-          <p className="animate-bounce text-5xl">Loading</p>
-        </div>
-      )}
-      {/* <Image src={kataBackground} className='h-full w-full pointer-events-none ' alt="Kata background" width={1280}/> */}
+        ) : (
+          <div className="mt-20 w-full text-center text-white">
+            <p className="animate-bounce text-5xl">Loading</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
