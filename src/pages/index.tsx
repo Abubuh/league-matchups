@@ -19,7 +19,7 @@ export default function Home() {
   };
 
   return (
-    <div className="h-[100vh] bg-slate-900">
+    <div className="h-fit min-h-[100vh] bg-slate-900">
       <div className="mx-auto flex w-[60%] flex-col gap-8">
         <nav className="mb-32 flex justify-end pt-10">
           <LogginButton></LogginButton>
@@ -40,12 +40,12 @@ export default function Home() {
           </div>
         </section>
         {champsFiltered?.length > 0 ? (
-          <ul className="rounded-md border-4 border-slate-950 bg-slate-800 p-4">
+          <ul className="mb-10 rounded-md border-4 border-slate-950 bg-slate-800 p-4">
             <div className="mx-auto grid h-[35vh] grid-cols-5 overflow-x-hidden overflow-y-scroll">
               {champsFiltered?.map(({ name, key, id }) => {
                 return (
                   <Link
-                    href={`/post/posts/${id}`}
+                    href={`/posts/${id}`}
                     key={key}
                     className="flex flex-col py-5 transition hover:scale-125"
                   >

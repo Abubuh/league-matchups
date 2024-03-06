@@ -28,7 +28,7 @@ const Page = () => {
       <section className="mx-52 flex justify-end gap-5">
         <RoutingButton
           text="Posts"
-          url={`/post/posts/${postData?.playingWith?.id}`}
+          url={`/posts/${postData?.playingWith?.id}`}
         />
         <RoutingButton text="Home" url="/" />
       </section>
