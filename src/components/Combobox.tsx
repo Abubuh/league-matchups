@@ -10,7 +10,7 @@ export function ComboBox({
   url,
 }: {
   items: { id: number; name: string; key?: string; image?: string }[];
-  onChange;
+  onChange: any;
   optionValue: string;
   inputWidth: string;
   url?: string;
@@ -31,7 +31,7 @@ export function ComboBox({
       if (!inputValue) setFilteredItems(items);
       setFilteredItems(
         items.filter((item) =>
-          item.name.toLowerCase().includes(inputValue?.toLowerCase()),
+          item.name.toLowerCase().includes(inputValue!.toLowerCase()),
         ),
       );
     },
