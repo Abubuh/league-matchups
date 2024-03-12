@@ -56,7 +56,7 @@ export const ImageComponent = ({
 
 export const CreatePost = () => {
   const params = useParams();
-  const { mutate, data, isSuccess } = api.post.createPost.useMutation();
+  const { mutate } = api.post.createPost.useMutation();
   const { register, handleSubmit, control, watch, getValues, formState } =
     useForm<z.infer<typeof schema>>({
       resolver: zodResolver(schema),
