@@ -2,12 +2,10 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import {
-  CHAMP_IMAGE_URL,
-  ITEM_IMAGE_URL,
-  RUNE_IMAGE_URL,
-  SUMMONERS_IMAGE_URL,
-} from "~/config";
+import Navbar from "~/components/Navbar";
+import RoutingButton from "~/components/RoutingButton";
+import SummonerImage from "~/components/SummonerImage";
+import { CHAMP_IMAGE_URL, ITEM_IMAGE_URL, RUNE_IMAGE_URL } from "~/config";
 import { api } from "~/utils/api";
 
 const PostsExample = () => {
@@ -16,7 +14,7 @@ const PostsExample = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const router = useRouter();
   const { data: fetchPostsData } =
-    api.post.getDataPostsById.useQuery(championUsedId);
+    api.post.getDataPostsById!.useQuery(championUsedId);
   const postsData = fetchPostsData?.data;
   const filteredPosts = postsData?.filter(
     (post) =>
@@ -38,14 +36,15 @@ const PostsExample = () => {
   };
 
   return (
-    <div className="flex h-[100vh] flex-col bg-slate-400 py-14">
+    <div className="flex h-[100vh] flex-col">
+      <Navbar></Navbar>
       <input
         type="text"
         placeholder="Look for matchup"
-        className=" h-10 w-3/12 self-center rounded-md border border-black py-8 text-center text-2xl text-black"
+        className="mt-8 h-10 w-3/12 self-center rounded-md border border-black py-8 text-center text-2xl text-black"
         onChange={handleSearchValue}
       />
-      <table className="mx-20 my-10 border-separate  rounded-xl border-[3px] border-black bg-gray-100">
+      <table className="mx-20 my-10 border-separate  rounded-xl border-[3px] border-black bg-gray-100 dark:bg-slate-400 dark:text-black">
         <thead>
           <tr className="grid grid-flow-col grid-cols-3">
             <th>Matchup</th>
@@ -67,11 +66,11 @@ const PostsExample = () => {
               return (
                 <tr key={id}>
                   <Link href={`/post/${playingWith?.key}/${id}`}>
-                    <button className="grid w-full grid-flow-col grid-cols-3 border-t-2 border-black hover:bg-gray-200">
-                      <div className="flex justify-center">
+                    <button className="grid w-full grid-flow-col grid-cols-3 border-t-2 border-black hover:bg-slate-200 dark:hover:bg-slate-500">
+                      <div className="my-auto flex justify-center ">
                         <img
                           src={`${CHAMP_IMAGE_URL}${playingWith?.key}.png`}
-                          className="max-h-[100px] w-4/12 max-w-[100px] rounded-2xl p-3"
+                          className="max-h-[100px] w-4/12 max-w-[100px] rounded-md p-3"
                           alt=""
                           width={100}
                           height={100}
@@ -79,7 +78,7 @@ const PostsExample = () => {
                         <p className="self-center text-2xl">vs</p>
                         <img
                           src={`${CHAMP_IMAGE_URL}${playingAgainst?.key}.png`}
-                          className="max-h-[100px] w-4/12 max-w-[100px] rounded-2xl p-3"
+                          className="max-h-[100px] w-5/12 max-w-[100px] rounded-md p-3"
                           alt=""
                           width={100}
                           height={100}
@@ -103,20 +102,14 @@ const PostsExample = () => {
                       </div>
                       <div className="mx-auto grid w-1/2 grid-flow-col grid-cols-2 self-center">
                         <div className="grid gap-2 py-1">
-                          <img
-                            src={`${SUMMONERS_IMAGE_URL}${mainSummoner?.key}.png`}
-                            alt="summoner"
-                            className="mx-auto w-4/12 rounded-md"
-                            height={100}
-                            width={100}
-                          />
-                          <img
-                            src={`${SUMMONERS_IMAGE_URL}${secondarySummoner?.key}.png`}
-                            alt="summoner"
-                            className="mx-auto h-fit w-4/12 rounded-md"
-                            height={100}
-                            width={100}
-                          />
+                          <SummonerImage
+                            summonerKey={mainSummoner?.key!}
+                            summonerName={mainSummoner?.name!}
+                          ></SummonerImage>
+                          <SummonerImage
+                            summonerKey={secondarySummoner?.key!}
+                            summonerName={secondarySummoner?.name!}
+                          ></SummonerImage>
                         </div>
                         <img
                           src={RUNE_IMAGE_URL + rune?.img}
@@ -135,17 +128,9 @@ const PostsExample = () => {
         </tbody>
       </table>
       <section className="flex w-full justify-around">
-        <Link href="/">
-          <button className="rounded-md border-[2.3px] border-black bg-gray-300 px-10 py-1 text-lg">
-            Go back
-          </button>
-        </Link>
+        <RoutingButton url="/" text="Go back" />
         {session ? (
-          <Link href={`/new/${championUsedId}`}>
-            <button className="rounded-md border-[2.3px] border-black bg-gray-300 px-10 py-1 text-lg">
-              Create post
-            </button>
-          </Link>
+          <RoutingButton url={`/new/${championUsedId}`} text="Create post" />
         ) : (
           ""
         )}
