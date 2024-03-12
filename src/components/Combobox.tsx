@@ -10,7 +10,7 @@ export function ComboBox({
   url,
 }: {
   items: { id: number; name: string; key?: string; image?: string }[];
-  onChange: any;
+  onChange: (...event: any[]) => void;
   optionValue: string;
   inputWidth: string;
   url?: string;
