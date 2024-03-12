@@ -3,10 +3,11 @@ import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
 import { Inter } from "next/font/google";
 import { api } from "~/utils/api";
-
+import { ThemeProvider } from "../components/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 import "~/styles/globals.css";
+import Navbar from "~/components/Navbar";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -14,9 +15,19 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <div className={inter.className}>
-        <Component {...pageProps} />
-      </div>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <div
+          id="background"
+          className={`${inter.className} bg-slate-300 dark:bg-slate-900`}
+        >
+          <Component {...pageProps} />
+        </div>
+      </ThemeProvider>
     </SessionProvider>
   );
 };
