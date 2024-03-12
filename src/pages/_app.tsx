@@ -7,7 +7,6 @@ import { ThemeProvider } from "../components/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 import "~/styles/globals.css";
-import Navbar from "~/components/Navbar";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
