@@ -14,7 +14,7 @@ const PostsExample = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const router = useRouter();
   const { data: fetchPostsData } =
-    api.post.getDataPostsById!.useQuery(championUsedId);
+    api.post.getDataPostsById.useQuery(championUsedId);
   const postsData = fetchPostsData?.data;
   const filteredPosts = postsData?.filter(
     (post) =>
@@ -103,12 +103,12 @@ const PostsExample = () => {
                       <div className="mx-auto grid w-1/2 grid-flow-col grid-cols-2 self-center">
                         <div className="grid gap-2 py-1">
                           <SummonerImage
-                            summonerKey={mainSummoner?.key!}
-                            summonerName={mainSummoner?.name!}
+                            summonerKey={mainSummoner!.key}
+                            summonerName={mainSummoner!.name}
                           ></SummonerImage>
                           <SummonerImage
-                            summonerKey={secondarySummoner?.key!}
-                            summonerName={secondarySummoner?.name!}
+                            summonerKey={secondarySummoner!.key}
+                            summonerName={secondarySummoner!.name}
                           ></SummonerImage>
                         </div>
                         <img

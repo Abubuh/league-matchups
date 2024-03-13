@@ -106,7 +106,7 @@ export const CreatePost = () => {
   return (
     <div className="flex max-h-[150vh] min-h-fit flex-col items-center overflow-x-hidden bg-slate-300 py-4 text-xl text-black">
       <section className="flex w-[98vw] max-w-[1280px] justify-end gap-5">
-        <RoutingButton text="Posts" url={`/posts/${params?.championId!}`} />
+        <RoutingButton text="Posts" url={`/posts/${params!.championId}`} />
         <RoutingButton text="Home" url="/" />
       </section>
       <h1 className="py-6 text-3xl">Insert data</h1>
