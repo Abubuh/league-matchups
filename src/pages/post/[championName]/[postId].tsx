@@ -92,12 +92,12 @@ const Page = () => {
                 Summoners
               </p>
               <SummonerImage
-                summonerKey={postData?.mainSummoner!.key!}
-                summonerName={postData?.mainSummoner!.name!}
+                summonerKey={postData!.mainSummoner!.key}
+                summonerName={postData!.mainSummoner!.name}
               ></SummonerImage>
               <SummonerImage
-                summonerKey={postData?.secondarySummoner!.key!}
-                summonerName={postData?.secondarySummoner!.name!}
+                summonerKey={postData!.secondarySummoner!.key}
+                summonerName={postData!.secondarySummoner!.name}
               ></SummonerImage>
             </div>
           </section>
@@ -131,7 +131,7 @@ const Page = () => {
             >
               {postData?.abilities?.map((spell) => {
                 console.log(spell);
-                return <AbilitiesImage spell={spell} />;
+                return <AbilitiesImage spell={spell} key={spell.key} />;
               })}
             </ul>
           </section>

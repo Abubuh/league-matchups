@@ -1,6 +1,6 @@
 import React from "react";
 import { api } from "~/utils/api";
-import graySquare from "../../../public/gray.png";
+import graySquare from "~/../public/gray.png";
 import {
   CHAMP_IMAGE_URL,
   RUNE_IMAGE_URL,
@@ -106,7 +106,7 @@ export const CreatePost = () => {
   return (
     <div className="flex max-h-[150vh] min-h-fit flex-col items-center overflow-x-hidden bg-slate-300 py-4 text-xl text-black">
       <section className="flex w-[98vw] max-w-[1280px] justify-end gap-5">
-        <RoutingButton text="Posts" url={`/posts/${params?.championId}`} />
+        <RoutingButton text="Posts" url={`/posts/${params?.championId!}`} />
         <RoutingButton text="Home" url="/" />
       </section>
       <h1 className="py-6 text-3xl">Insert data</h1>
@@ -313,7 +313,7 @@ export const CreatePost = () => {
           <h2 className="col-span-2">Select your item/items</h2>
           <h2 className="col-span-2 col-start-4 ">
             Tips for lane phase <br />
-            Separate each tip with a "."
+            Separate each tip with a &#34;.&#34;
           </h2>
         </div>
 
