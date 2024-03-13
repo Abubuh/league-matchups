@@ -92,12 +92,12 @@ const Page = () => {
                 Summoners
               </p>
               <SummonerImage
-                summonerKey={postData!.mainSummoner?.key! as string} /* */
-                summonerName={postData!.mainSummoner?.name! as string}
+                summonerKey={postData!.mainSummoner!.key as string} /* */
+                summonerName={postData!.mainSummoner!.name as string}
               ></SummonerImage>
               <SummonerImage
-                summonerKey={postData?.secondarySummoner?.key! as string} /* */
-                summonerName={postData!.secondarySummoner?.name! as string}
+                summonerKey={postData?.secondarySummoner!.key as string} /* */
+                summonerName={postData!.secondarySummoner!.name as string}
               ></SummonerImage>
             </div>
           </section>
