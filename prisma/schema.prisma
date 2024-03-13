@@ -99,7 +99,7 @@ model Post {
   playingWith              Champion      @relation("playingWith", fields: [playingWithId], references: [id])
   playingAgainstId         Int
   playingAgainst           Champion      @relation("playingAgainst", fields: [playingAgainstId], references: [id])
-  playStyle                String
+  playStyle                String        @db.VarChar(500)
   mainSummonerSpellId      Int
   mainSummonerSpell        SummonerSpell @relation("mainSummonerSpell", fields: [mainSummonerSpellId], references: [id])
   secondarySummonerSpellId Int
