@@ -4,8 +4,8 @@ export const authOptions = {
   // Configure one or more authentication providers
   providers: [
     DiscordProvider({
-      clientId: process.env.DISCORD_CLIENT_ID! as string,
-      clientSecret: process.env.DISCORD_CLIENT_SECRET! as string,
+      clientId: process.env.DISCORD_CLIENT_ID!,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET!,
     }),
     // GoogleProvider({
     //   clientId: process.env.GOOGLE_CLIENT_ID as string,
