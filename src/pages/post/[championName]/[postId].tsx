@@ -4,13 +4,7 @@ import AbilitiesImage from "~/components/AbilitiesImage";
 import Navbar from "~/components/Navbar";
 import RoutingButton from "~/components/RoutingButton";
 import SummonerImage from "~/components/SummonerImage";
-import {
-  ABILITIES_IMAGE_URL,
-  ITEM_IMAGE_URL,
-  POST_CHAMP_IMAGE_URL,
-  RUNE_IMAGE_URL,
-  SUMMONERS_IMAGE_URL,
-} from "~/config";
+import { ITEM_IMAGE_URL, POST_CHAMP_IMAGE_URL, RUNE_IMAGE_URL } from "~/config";
 import { api } from "~/utils/api";
 
 const Page = () => {
@@ -98,12 +92,12 @@ const Page = () => {
                 Summoners
               </p>
               <SummonerImage
-                summonerKey={postData?.mainSummoner?.key!}
-                summonerName={postData?.mainSummoner?.name!}
+                summonerKey={postData?.mainSummoner!.key!}
+                summonerName={postData?.mainSummoner!.name!}
               ></SummonerImage>
               <SummonerImage
-                summonerKey={postData?.secondarySummoner?.key!}
-                summonerName={postData?.secondarySummoner?.name!}
+                summonerKey={postData?.secondarySummoner!.key!}
+                summonerName={postData?.secondarySummoner!.name!}
               ></SummonerImage>
             </div>
           </section>
