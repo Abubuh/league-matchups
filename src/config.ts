@@ -1,6 +1,6 @@
 const version: string = await fetch('https://ddragon.leagueoflegends.com/api/versions.json')
 .then(data => data.json() as Promise<string[]>)
-.then(res => { return res[0] as string})
+.then(res => { return res[0]!})
 
 export const CHAMP_IMAGE_URL =`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/`;
 export const ABILITIES_IMAGE_URL =`http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/`;

@@ -88,7 +88,7 @@ export const CreatePost = () => {
       },
       {
         onSuccess: (data) =>
-          router.push(`/post/${champName?.data}/${data?.id}`),
+          void router.push(`/post/${champName?.data}/${data?.id}`),
       },
     );
   };
@@ -108,7 +108,7 @@ export const CreatePost = () => {
       <section className="flex w-[98vw] max-w-[1280px] justify-end gap-5">
         <RoutingButton
           text="Posts"
-          url={`/posts/${params.championId as string}`}
+          url={`/posts/${params?.championId as string}`}
         />
         <RoutingButton text="Home" url="/" />
       </section>

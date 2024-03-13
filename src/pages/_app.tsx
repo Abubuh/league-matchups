@@ -22,7 +22,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
       >
         <div
           id="background"
-          className={`${inter.className} bg-slate-300 dark:bg-slate-900`}
+          className={`${inter.className} sans bg-slate-300 dark:bg-slate-900`}
         >
           <Component {...pageProps} />
         </div>

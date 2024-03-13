@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/non-nullable-type-assertion-style */
 import { useParams } from "next/navigation";
 import React from "react";
 import AbilitiesImage from "~/components/AbilitiesImage";
@@ -92,12 +93,12 @@ const Page = () => {
                 Summoners
               </p>
               <SummonerImage
-                summonerKey={postData!.mainSummoner!.key as string} /* */
-                summonerName={postData!.mainSummoner!.name as string}
+                summonerKey={postData?.mainSummoner?.key as string} /* */
+                summonerName={postData?.mainSummoner?.name as string}
               ></SummonerImage>
               <SummonerImage
-                summonerKey={postData?.secondarySummoner!.key as string} /* */
-                summonerName={postData!.secondarySummoner!.name as string}
+                summonerKey={postData?.secondarySummoner?.key as string} /* */
+                summonerName={postData?.secondarySummoner?.name as string}
               ></SummonerImage>
             </div>
           </section>
