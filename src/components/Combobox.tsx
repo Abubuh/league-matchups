@@ -10,7 +10,7 @@ export function ComboBox({
   url,
 }: {
   items: { id: number; name: string; key?: string; image?: string }[];
-  onChange: (...event: any[]) => void;
+  onChange: (arg0: number) => void;
   optionValue: string;
   inputWidth: string;
   url?: string;
@@ -36,7 +36,7 @@ export function ComboBox({
       );
     },
     onSelectedItemChange({ selectedItem }) {
-      onChange(selectedItem?.id);
+      onChange(selectedItem!.id);
     },
     items: filteredItems,
     itemToString(item) {
