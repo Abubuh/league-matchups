@@ -5,7 +5,7 @@ import LogginButton from "./LoginButton";
 interface Button {
   children?: React.ReactNode;
 }
-const Navbar = ({ children, ...props }: Button) => {
+const Navbar = ({ children }: Button) => {
   return (
     <nav className="flex max-w-[1280px] items-center justify-end gap-3 pt-10">
       <div className="flex gap-3">

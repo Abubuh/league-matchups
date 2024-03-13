@@ -17,7 +17,7 @@ export default function SwitchButton() {
     >
       <span
         aria-hidden="true"
-        className="pointer-events-none inline-block h-[20px] w-[22px] translate-x-0 transform rounded-full bg-gray-500 shadow-lg ring-0 transition-all duration-700 ease-in-out dark:translate-x-7 dark:bg-slate-50 "
+        className=" inline-block h-[20px] w-[22px] translate-x-0 transform rounded-full bg-gray-500 shadow-lg ring-0 transition-all duration-700 ease-in-out dark:translate-x-7 dark:bg-slate-50 "
       />
     </Switch>
   );
