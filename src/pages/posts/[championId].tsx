@@ -103,12 +103,12 @@ const PostsExample = () => {
                       <div className="mx-auto grid w-1/2 grid-flow-col grid-cols-2 self-center">
                         <div className="grid gap-2 py-1">
                           <SummonerImage
-                            summonerKey={mainSummoner!.key as string}
-                            summonerName={mainSummoner!.name! as string}
+                            summonerKey={mainSummoner?.key as string}
+                            summonerName={mainSummoner?.name as string}
                           ></SummonerImage>
                           <SummonerImage
-                            summonerKey={secondarySummoner!.key as string}
-                            summonerName={secondarySummoner?.name! as string}
+                            summonerKey={secondarySummoner?.key as string}
+                            summonerName={secondarySummoner?.name as string}
                           ></SummonerImage>
                         </div>
                         <img
