@@ -7,7 +7,7 @@ interface Button {
 }
 const Navbar = ({ children }: Button) => {
   return (
-    <nav className="flex max-w-[1280px] items-center justify-end gap-3 pt-10">
+    <nav className="flex max-h-[10vh] max-w-[1500px] items-center justify-end gap-3 pt-10">
       <div className="flex gap-3">
         <p>
           <svg

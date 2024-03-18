@@ -99,7 +99,7 @@ export function ComboBox({
                 ""
               )}
 
-              <span className="mx-auto px-2">{item.name}</span>
+              <span className="mx-auto px-2 text-black">{item.name}</span>
             </li>
           ))}
       </ul>

@@ -18,8 +18,8 @@ export default function Home() {
   };
   return (
     <div className="h-fit min-h-[100vh]">
-      <div className="mx-auto flex w-[60%] flex-col gap-8">
-        <Navbar></Navbar>
+      <Navbar></Navbar>
+      <div className="mx-auto flex w-[60%] flex-col gap-8 pt-10">
         <section className="flex items-center">
           <div className=" flex w-full flex-col gap-14">
             <h1 className="text-center text-8xl text-black dark:text-white">

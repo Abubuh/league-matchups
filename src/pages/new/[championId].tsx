@@ -19,6 +19,8 @@ import { ComboBox } from "~/components/Combobox";
 import { useRouter } from "next/router";
 import RoutingButton from "~/components/RoutingButton";
 import { useParams } from "next/navigation";
+import { useSession } from "next-auth/react";
+import Navbar from "~/components/Navbar";
 
 const schema = z.object({
   runeId: z.number().min(1),
@@ -102,23 +104,25 @@ export const CreatePost = () => {
         : currentSelection?.playingWithId,
   });
   const values = getValues();
-
-  return (
-    <div className="flex max-h-[150vh] min-h-fit flex-col items-center overflow-x-hidden bg-slate-300 py-4 text-xl text-black">
-      <section className="flex w-[98vw] max-w-[1280px] justify-end gap-5">
+  const { data: session } = useSession();
+  return session ? (
+    <div className="flex max-h-[150vh] min-h-fit flex-col overflow-x-hidden  text-center text-black ">
+      <Navbar>
         <RoutingButton
           text="Posts"
           url={`/posts/${params?.championId as string}`}
         />
         <RoutingButton text="Home" url="/" />
-      </section>
-      <h1 className="py-6 text-3xl">Insert data</h1>
+      </Navbar>
+      <h1 className="py-6 text-3xl dark:text-white">Insert data</h1>
       <form
         onSubmit={handleSubmit(onSubmit, (e) => console.log(e))}
-        className="flex max-w-[1280px] flex-col self-center"
+        className="flex max-w-[1280px] flex-col self-center text-xl dark:text-white"
       >
         <section className="">
-          <h2 className="text-center">Select matchup</h2>
+          <h2 className="text-center text-xl dark:text-white">
+            Select matchup
+          </h2>
           <div className="grid grid-cols-5 items-center pb-5 pt-8 text-center text-black">
             <div className="col-span-2">
               <ImageComponent
@@ -155,7 +159,7 @@ export const CreatePost = () => {
                 </>
               )}
             </div>
-            <p>vs</p>
+            <p className="dark:text-white">vs</p>
             <div className="col-span-2">
               <ImageComponent
                 imageWidth="large"
@@ -396,6 +400,14 @@ export const CreatePost = () => {
           Submit post
         </button>
       </form>
+    </div>
+  ) : (
+    <div className=" h-[100vh]">
+      <div>
+        <p className="flex w-fit items-center justify-center text-5xl">
+          What are you doing here? you shouldn&apos;t be here!
+        </p>
+      </div>
     </div>
   );
 };

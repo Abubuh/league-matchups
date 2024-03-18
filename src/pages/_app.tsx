@@ -21,7 +21,6 @@ const MyApp: AppType<{ session: Session | null }> = ({
         disableTransitionOnChange
       >
         <div
-          id="background"
           className={`${inter.className} sans bg-slate-300 dark:bg-slate-900`}
         >
           <Component {...pageProps} />

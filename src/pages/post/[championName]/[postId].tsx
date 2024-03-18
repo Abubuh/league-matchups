@@ -23,15 +23,13 @@ const Page = () => {
   const tipParagraph = postData?.playstyle?.split(".");
   return (
     <div className="text-black dark:text-white">
-      <section className="mx-52 flex max-h-[10vh] justify-end gap-5">
-        <Navbar>
-          <RoutingButton
-            text="Posts"
-            url={`/posts/${postData?.playingWith?.id}`}
-          />
-          <RoutingButton text="Home" url="/" />
-        </Navbar>
-      </section>
+      <Navbar>
+        <RoutingButton
+          text="Posts"
+          url={`/posts/${postData?.playingWith?.id}`}
+        />
+        <RoutingButton text="Home" url="/" />
+      </Navbar>
       <div className="grid h-full min-h-[90vh] grid-cols-5 justify-center gap-5  px-36 py-12 ">
         <article className="col-span-2 mx-auto w-full ">
           <img
