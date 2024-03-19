@@ -60,6 +60,7 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
+  secret: "Idk-this-is-a-test-kind-of",
 };
 
 /**
