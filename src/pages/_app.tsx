@@ -14,14 +14,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <div
-          className={`${inter.className} sans bg-slate-300 dark:bg-slate-900`}
+          className={`${inter.className} bg-slate-300 transition delay-300 ease-in-out dark:bg-slate-900`}
         >
           <Component {...pageProps} />
         </div>
