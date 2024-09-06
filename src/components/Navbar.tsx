@@ -1,5 +1,5 @@
 import React from "react";
-import SwitchButton from "./Switch";
+import ThemeSwitchButton from "./ThemeSwitchButton";
 import LogginButton from "./LoginButton";
 
 interface Button {
@@ -7,11 +7,11 @@ interface Button {
 }
 const Navbar = ({ children }: Button) => {
   return (
-    <nav className="flex max-h-[10vh] max-w-[1500px] items-center justify-end gap-3 pt-10">
-      <div className="flex gap-3">
+    <nav className="flex max-h-[10vh] max-w-[1500px] items-center justify-end gap-3 pt-10 ">
+      <div className="gap- 3 flex ">
         <p>
           <svg
-            className="h-6 w-6 text-black dark:text-white"
+            className="h-6 w-6 text-black  transition delay-200 ease-in-out dark:text-white"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -24,10 +24,10 @@ const Navbar = ({ children }: Button) => {
             />
           </svg>
         </p>
-        <SwitchButton></SwitchButton>
+        <ThemeSwitchButton></ThemeSwitchButton>
         <p>
           <svg
-            className="h-6 w-6 text-black dark:text-white"
+            className="h-6 w-6 text-black  transition delay-200 ease-in-out dark:text-white"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
