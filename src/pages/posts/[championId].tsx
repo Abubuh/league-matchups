@@ -13,6 +13,10 @@ const PostsExample = () => {
   const [championUsedId, setChampionUsed] = useState<number>(0);
   const [searchValue, setSearchValue] = useState<string>("");
   const router = useRouter();
+  const { data: fetchChampName } = api.champion.getNameById.useQuery({
+    id: championUsedId,
+  });
+  const champName = fetchChampName?.data;
   const { data: fetchPostsData } =
     api.post.getDataPostsById.useQuery(championUsedId);
   const postsData = fetchPostsData?.data;
@@ -41,10 +45,10 @@ const PostsExample = () => {
       <input
         type="text"
         placeholder="Look for matchup"
-        className="mt-8 h-10 w-3/12 self-center rounded-md border border-black py-8 text-center text-2xl text-black"
+        className="mt-8 h-10 w-3/12 self-center rounded-md border border-black py-8 text-center text-2xl text-black transition delay-200 ease-in-out"
         onChange={handleSearchValue}
       />
-      <table className="mx-20 my-10 border-separate  rounded-xl border-[3px] border-black bg-gray-100 dark:bg-slate-400 dark:text-black">
+      <table className="mx-20 my-10 border-separate  rounded-xl border-[3px] border-black bg-gray-100 text-black transition delay-200 ease-in-out dark:bg-slate-400">
         <thead>
           <tr className="grid grid-flow-col grid-cols-3">
             <th>Matchup</th>
@@ -129,6 +133,7 @@ const PostsExample = () => {
       </table>
       <section className="flex w-full justify-around">
         <RoutingButton url="/" text="Go back" />
+        <RoutingButton url={`/champInfo/${champName}`} text="Champ info" />
         {session ? (
           <RoutingButton url={`/new/${championUsedId}`} text="Create post" />
         ) : (

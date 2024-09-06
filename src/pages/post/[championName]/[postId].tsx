@@ -31,7 +31,7 @@ const Page = () => {
         <RoutingButton text="Home" url="/" />
       </Navbar>
       <div className="grid h-full min-h-[90vh] grid-cols-5 justify-center gap-5  px-36 py-12 ">
-        <article className="col-span-2 mx-auto w-full ">
+        <article className="col-span-2 mx-auto w-full  transition delay-200 ease-in-out">
           <img
             src={POST_CHAMP_IMAGE_URL + playingAsKey + "_0.jpg"}
             width={380}
@@ -65,7 +65,7 @@ const Page = () => {
             })}
           </ul>
         </article>
-        <article className="grid-rows-7 grid gap-4">
+        <article className="grid-rows-7 grid gap-4 transition delay-200 ease-in-out">
           <p className="row-start-1 self-center text-center text-6xl ">vs</p>
           <div className="flex h-72 flex-col gap-1 overflow-x-auto overscroll-y-auto">
             {tipParagraph ? (
@@ -109,7 +109,7 @@ const Page = () => {
             />
           </section>
         </article>
-        <article className="col-span-2 col-start-4 mx-auto flex w-full flex-col">
+        <article className="col-span-2 col-start-4 mx-auto flex w-full flex-col  transition delay-200 ease-in-out">
           <img
             src={`${POST_CHAMP_IMAGE_URL}${postData?.playingAgainst?.key}_0.jpg`}
             width={380}
