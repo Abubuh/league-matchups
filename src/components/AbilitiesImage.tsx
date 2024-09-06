@@ -5,7 +5,6 @@ const AbilitiesImage = ({
 }: {
   spell: { championId: number; key: string; name: string; cooldown: number };
 }) => {
-  console.log(spell.key);
   return (
     <section key={spell.key} className="mx-auto w-full text-center">
       <img
