@@ -6,7 +6,7 @@ export default function LogginButton() {
       <>
         {/* Signed in as {session.user.email} <br /> */}
         <button
-          className="text-md w-[120px] max-w-[120px] rounded-md border-[2.3px] border-black bg-gray-300 px-5 py-1 text-black"
+          className="text-md w-[120px] max-w-[120px] rounded-md border-[2.3px] border-gray-500 bg-gray-200 px-5 py-1 text-black hover:opacity-75"
           onClick={() => signOut()}
         >
           Sign out
@@ -17,7 +17,7 @@ export default function LogginButton() {
   return (
     <>
       <button
-        className="text-md w-[120px] max-w-[120px] rounded-md border-[2.3px] border-black bg-gray-300 px-5 py-1 text-black"
+        className="text-md w-[120px] max-w-[120px] rounded-md border-[2.3px] border-gray-500 bg-gray-200 px-5 py-1 text-black hover:opacity-75"
         onClick={() => signIn()}
       >
         Sign in
